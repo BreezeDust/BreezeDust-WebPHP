@@ -1,0 +1,130 @@
+<script type="text/javascript">
+KindEditor.ready(function(K) {
+	var editor1 = K.create('textarea[name="DiaryPage"]', {
+		//cssPath : 'Synta/styles/shCoreDefault.css',
+		uploadJson : 'kindeditor/php/upload_json.php',
+		fileManagerJson : 'kindeditor/php/file_manager_json.php',
+		allowFileManager : true,
+		afterBlur: function(){this.sync();}
+	});
+	var editor2 = K.create('textarea[name="YuLan"]', {
+		//cssPath : 'Synta/styles/shCoreDefault.css',
+		uploadJson : 'kindeditor/php/upload_json.php',
+		fileManagerJson : 'kindeditor/php/file_manager_json.php',
+		allowFileManager : true,
+		afterBlur: function(){this.sync();}
+	});
+});
+</script>
+	<script type="text/javascript">
+		cons=0;
+		function yulan(con){
+			if(cons%2==0){
+				document.getElementById("yulans").style.visibility="hidden";
+				document.getElementById("yulans").style.width="0px";
+				document.getElementById("yulans").style.height="0px";
+			}
+			else{
+				document.getElementById("yulans").style.width="800px";
+				document.getElementById("yulans").style.height="300px";
+				document.getElementById("yulans").style.visibility="visible";
+			}
+
+			
+		}
+	</script>
+<div id="MSG1" style=" display:none;width:186px; height:20px;"> 
+		<img src="img/error1.png" / >
+</div>
+
+<div id="MSG2" style=" display:none;width:186px; height:20px;"> 
+		<img src="img/ok1.png" / >
+</div>
+
+<table >
+	<tr>
+		<td>
+		<input name="BiaoTi" type="text"  value="请输入标题" id="BiaoTi"/>
+		</td>
+	</tr>
+  	<tr>
+    	<td>
+				<textarea id="DiaryPage" name="DiaryPage" style="width:800px; height:400px;"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<select name="tag" class="ltag" id="TAG">
+		  <option value="1" selected="selected">Technology</option>
+		  <option value="2">Notepad</option>
+		  <option value="3">Release</option>
+		  <option value="4">Mental Process</option>
+	   </select>
+		</td>
+	</tr>
+  	<tr>
+    	<td>
+		<input name="FaBiao" type="button" value="发表" class="anniu1"  onclick="addPageS();"/>
+		</td>
+ 	</tr>
+  	<tr>
+ 		<td>
+			<div  class="YuLanout">
+			
+				<span style="cursor:pointer;"><div id="YuLan1" onclick="yulan(cons++)" ></div></span>
+				<div id="yulans" style="visibility:hidden; width:0px; height:0px;">
+				<textarea id="YuLan" name="YuLan" style="width:800px; height:400px;"></textarea>
+				</div>
+			</div>
+		</td> 
+  	</tr>
+</table>
+<!--JS-->
+<!--AJAX-->
+<script type="text/javascript">
+function getXMLHttpRequest() {
+    var createXHR;
+    if (window.XMLHttpRequest) {
+    // IE7+, Firefox, Chrome, Opera, Safari
+        createXHR = new XMLHttpRequest();
+    }
+    else {
+    // c IE6, IE5
+        createXHR = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return createXHR;
+}
+    function addPageS() {
+        var  Btitle=document.getElementById("BiaoTi");
+        if (!(BiaoTi.value == "" || BiaoTi.value == "请输入标题")) {
+            addPage();
+        }
+        else {
+            alert("请输入标题");
+        }
+    }
+    function addPage() {
+        var Jsonhttp = getXMLHttpRequest();
+        Jsonhttp.onreadystatechange = function () {
+            if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
+                var msg = eval("(" + Jsonhttp.responseText + ")");
+                if (msg.msg == "ok") {
+                    $("#MSG2").fadeIn(3000);
+                    $("#MSG2").fadeOut(5000);
+                }
+                else {
+                    $("#MSG1").fadeIn(3000);
+                    $("#MSG1").fadeOut(5000);
+                }
+            }
+        }
+        Jsonhttp.open("POST", "index.php?controller=api&action=addDiary", true);
+        Jsonhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        Jsonhttp.send("" +
+                      "PageName=" + encodeURIComponent($("#BiaoTi").attr("value")) + "&" +
+                      "PageContent=" + encodeURIComponent($('#DiaryPage').val()) + "&" +
+                      "PageYulan=" + encodeURIComponent($('#YuLan').val()) + "&" +
+                      "PageTag=" + encodeURIComponent($("#TAG").attr("value")) + "&" +
+                      "");
+    }
+</script>

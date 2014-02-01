@@ -1,0 +1,92 @@
+body{
+	margin:0px;
+	background-color:#e8e9eb;
+}
+#CEN{
+	width:1340px;
+	height:auto;
+	margin:0px auto;
+	position:relative;
+	background-color:#333333;
+}
+#heder{
+	position:relative;
+	width:175px;
+	height:69px;
+	background-image:url(../img/about.png);
+	background-repeat:no-repeat;
+	top:80px;
+	left:250px;
+}
+#heder:hover{
+	position:relative;
+	width:175px;
+	height:69px;
+	background-image:url(../img/about1.png);
+	background-repeat:no-repeat;
+	top:80px;
+	left:250px;
+}
+#p_up{
+	background-repeat:no-repeat;
+	background-image:url(../img/up.jpg);
+	background-color:white;
+	width:100%;
+	height:300px;
+	position:relative;
+}
+
+#ban{
+	width:750px;
+	height:500px;
+	background-color:#FFFFFF;
+	border-color:#e8e9eb;
+	border-style:solid;
+	border-width:3px;
+	position:relative;
+	top:-110px;
+	left:350px;
+	padding-left:30px;
+	padding-top:10px;
+}
+.h1{
+	font-family:Microsoft Yahei, Segoe UI, Arial;
+	font-size:12px;
+	color:#555555;
+}
+.h2{
+	font-family:Microsoft Yahei, Segoe UI, Arial;
+	font-size:12px;
+	color:#666666;
+}
+#dibu{
+	margin: 0 auto;
+	padding-top:20px;
+	border-top-color:#555555;
+	border-top-style:solid;
+	border-top-width:1px;
+	color:#555555;
+	background-color:#333333;
+	width:800px;
+	height:30px;
+	font-size:12px;
+}
+.fonts{
+	color:#555555;
+	font-size:12px;
+	font-weight:bold;
+	font-family:Microsoft YaHei,SimSun;
+
+}
+.back{
+	width:66px;
+	height:44px;
+	background-repeat:no-repeat;
+	background-image:url(../img/Aback1.png);
+}
+.back:hover{
+	width:66px;
+	height:44px;
+	background-repeat:no-repeat;
+	background-image:url(../img/Aback2.png);
+}

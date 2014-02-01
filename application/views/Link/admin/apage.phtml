@@ -1,0 +1,67 @@
+<?php 
+	if($this->view->msg){
+		?>
+<div id="MSG2"> 
+		<img src="img/ok2.png" />
+</div>		
+<script type="text/javascript">
+$("#MSG2").fadeIn(3000);
+$("#MSG2").fadeOut(5000);
+</script>
+		<?php 
+	}
+?>
+<table>
+		<?php 
+			$table=$this->view->pageTable;
+			for($con=0;$con<$table->count;$con++){
+				$scolor="#ffffff";
+				if($con%2==0){
+					$scolor="#f5f5f5";
+				}
+				?>
+				<tr class="Ap_tr" style="background-color:<?php echo $scolor?>;">
+					<td width="300px" ><?php echo $table->Rows[$con]['PageName']?></td>
+					<td width="150px" style="color:#999999;"><?php echo $table->Rows[$con]['PageDate']?></td>
+					<td width="50px"><a href="index.php?controller=admin&art=2&cmd=2&pageID=<?php echo $table->Rows[$con]['PageID']?>" class="Ap_td">修改</a></td>
+					<td width="50px"><a href="index.php?controller=admin&art=2&cmd=1&pageID=<?php echo $table->Rows[$con]['PageID']?>" class="Ap_td">删除</a></td>
+				</tr>
+				<?php
+			}
+		?>
+
+
+</table>
+	<table>
+		<?php 
+			if($this->view->PageCount<=1){
+				?>
+				<tr><td width="600px;"><div class="null"></div></td>
+				<td><font><div class="null"></div></font></td></tr>
+				<?php 
+			}
+			else{
+				if($this->view->Page==1){
+					?>
+					<tr><td width="600px;"><div class="null"></div></td>
+					<?php 
+				}
+				else {
+					?>
+					<tr><td width="600px;"><a href="index.php?controller=admin&art=2&page=<?php echo $this->view->Page-1?>"><div class="back"></div></a></td>
+					<?php 
+				}
+				
+				if($this->view->Page==$this->view->PageCount){
+					?>
+					<td><font><div class="null"></div></font></td></tr>
+					<?php
+				}
+				else{
+					?>
+					<td><a href="index.php?controller=admin&art=2&page=<?php echo $this->view->Page+1?>"><div class="next"></div></a>  </td></tr>
+					<?php 
+				}
+			}
+		?>
+</table>

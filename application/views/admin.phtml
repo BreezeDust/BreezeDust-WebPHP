@@ -1,0 +1,49 @@
+<?php 
+	$denluBLL=new DenLuBLL();
+	if(!is_null($_COOKIE["userName"]) && !is_null($_COOKIE["userPasswd"]) && $denluBLL->login($_COOKIE["userName"], $_COOKIE["userPasswd"])){
+		
+	}
+	else{
+		header('Location: index.php?controller=login');
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BreezeDust-管理</title>
+	<script type="text/javascript" src="JS/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/admin.css" />
+	<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="kindeditor/plugins/code/code.js"></script>
+</head>
+<body >
+	<div id="CEN">
+		<div id="AH"></div>
+		<div id="page">
+		<table border="0">
+		  <tr>
+			<td valign=top>
+				<div id="A1">
+					<a href="index.php?controller=admin&art=1" class="ad"><li>发表日志</li></a>
+					<a href="index.php?controller=admin&art=2" class="ad"><li>管理日志</li></a>
+					<a href="index.php?controller=admin&art=3" class="ad"><li>评论管理</li></a>
+					<a href="aindex.php?controller=admin&art=4" class="ad"><li>系统设置</li></a>
+					
+				</div>
+			</td>
+			<td valign=top>
+				<div id="A2">
+				<?php 
+					require_once WEBROOT.'/application/views/Link/admin/'.$this->view->selectPage.".phtml";
+				?>					
+				</div>
+			</td>
+		  </tr>
+		</table>
+		</div>
+	</div>
+	
+</body>
+</html>

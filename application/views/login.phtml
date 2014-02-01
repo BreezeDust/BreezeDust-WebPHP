@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BreezeDust-登录后台</title>
+<style type="text/css">
+#CEN{
+	
+	width:400px;
+	height:300px;;
+	margin:0px auto;
+	margin-top:150px;
+	position:relative;
+	font-size:12px;
+	font-weight:500;
+	background-image:url(img/c1.png);
+	background-repeat:no-repeat;
+	padding-top:30px;
+	padding-left:50px;
+	
+}
+.put{
+	width:150px;
+	height:15px;
+	color:#889DA1;
+	font-size:12px;
+}
+.anniu1{
+	width:50px;
+	height:23px;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	background-color:#FFFFFF;
+	color:#666666;
+	font-weight:800;
+}
+.anniu1:hover{
+	width:50px;
+	height:23px;
+	border-style:solid; 
+	border-color:#CCCCCC; 
+	background-color:#999999;
+	color:#666666;
+	font-weight:800;
+}
+</style>
+</head>
+
+<body>
+<div id="CEN">
+		<form method=post action="index.php?controller=login">
+		<table border="0">
+		<tr>
+			<td align="center" style="padding-left:15px;">
+			<img src="img/management.png" />
+			</td>
+		</tr>
+		  <tr>
+			<td><font>用户：</font><input name="name" type="text" class="put"/></td>
+		  </tr>
+		  <tr>
+			<td style="padding-top:10px;"><font>密码：</font><input name="password" type="password"  class="put"/></td>
+		  </tr>
+		  <tr align="center">
+			<td style="padding-top:30px;"><input name="DenLu" type="submit" value="登陆" class="anniu1"/></td>
+		  </tr>
+		</table>
+		</form>
+</div>
+</body>
+</html>

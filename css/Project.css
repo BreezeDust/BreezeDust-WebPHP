@@ -1,0 +1,144 @@
+body{
+	margin:0px;
+	background-color:#e8e9eb;
+}
+#CEN{
+	width:1340px;
+	height:auto;
+	margin:0px auto;
+	position:relative;
+	background-color:#333333;
+}
+#page{
+	width:100%;
+
+}
+#p_up{
+	background-repeat:no-repeat;
+	background-image:url(../img/up.jpg);
+	background-color:white;
+	width:100%;
+	height:300px;
+	position:relative;
+}
+
+
+
+#dibu{
+	margin: 0 auto;
+	padding-top:20px;
+	border-top-color:#555555;
+	border-top-style:solid;
+	border-top-width:1px;
+	color:#555555;
+	background-color:#333333;
+	width:800px;
+	height:30px;
+	font-size:12px;
+}
+.fonts{
+	color:#555555;
+	font-size:12px;
+	font-weight:bold;
+	font-family:Microsoft YaHei,SimSun;
+
+}
+#daohang{
+	padding-top:60px;
+	padding-left:470px;
+	width:500px;
+	height:30px;
+}
+#daohang a{
+	text-decoration:none;
+	color:#333333;
+	font-size:14px;
+	font-weight:700;
+	margin-left:50px;
+}
+#daohang a:hover{
+	color:#FFFFFF;
+	background-color:#333333;
+}
+#heder{
+	background-image:url(../img/P1-1.png);
+	background-repeat:no-repeat;
+	width:156px;
+	height:160px;
+	position:relative;
+	left:170px;
+	top:30px;
+}
+#heder:hover{
+	background-image:url(../img/P1-2.png);
+	background-repeat:no-repeat;
+	width:380px;
+	height:160px;
+	position:relative;
+	left:170px;
+	top:30px;
+}
+#PRO{
+
+width:1000px;
+position:relative;
+top:-180px;
+left:250px;
+color:#6D6D6D;
+}
+#PRO a:link,a:visited,a:active{
+	color:#6D6D6D;
+	text-decoration: none;
+}
+#PRO strong{
+	color:#666666;
+	font-size:14px;
+}
+#PRO .aTitle{
+	color:#666666;
+	font-size:14px;
+	font-weight:bold;
+	
+}
+#PRO .aTitle:hover {
+	color:#CCCCCC;
+	font-size:14px;
+	font-weight:bold;
+	
+}
+.box{
+	border-color:#e8e9eb;
+	border-style:solid;
+	border-width:3px;
+	padding:1px; 
+	background-color:#FFFFFF;
+}
+.boxTitle{
+	background-color:#F9F9F9;
+	font-family:Microsoft YaHei,SimSun;
+	font-weight:bold;
+	font-size:14px;
+	padding:5px;
+	color:#333333;
+}
+.boxMain{
+	padding:10px;
+	font-family:Microsoft YaHei,SimSun;
+	font-size:12px;
+	line-height:25px;
+}
+.boxA{
+	display:block;
+	padding:5px 0 5px 20px;
+	margin-bottom:10px;
+	border:solid 1px #F4F4F4;
+}
+.boxA:hover{
+	border-color:#E3E3E3;
+	background-color:#F9F9F9;
+	}
+hr{
+	height:1px;
+	border:none;
+	border-top:1px solid #E3E3E3;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BreezeDust</title>
+<link type="text/css" rel="stylesheet" href="css/index.css"/>
+<!-- function -->
+</head>
+
+<body>
+	<div id="CEN">
+		<div id="page">
+			<!-- UP -->
+			<div id="p_up">
+				<div id="daohang">
+					<a href="index.php?controller=index">Home</a> <a
+						href="index.php?controller=diary">Diary</a> <a
+						href="index.php?controller=project">Project</a> <a
+						href="index.php?controller=about">About</a>
+				</div>
+			</div>
+			<!-- END UP -->
+			<!-- DOWN -->
+			<div id="p_down"></div>
+			<div id="c1" align="left">
+				<div id="tag">
+					<img src="img/TAG.png" />
+				</div>
+				<div id="c1li">
+					<li><img src="img/dian.png" /><a
+						href="index.php?controller=diary&art=3&tag=1">Technology</a></li>
+					<li><img src="img/dian.png" /><a
+						href="index.php?controller=diary&art=3&tag=2">Notepad</a></li>
+					<li><img src="img/dian.png" /><a
+						href="index.php?controller=diary&art=3&tag=3">Release</a></li>
+					<li><img src="img/dian.png" /><a
+						href="index.php?controller=diary&art=3&tag=4">Mental Process</a></li>
+				</div>
+			</div>
+			<div id="c2">
+				<div id="c2_1">
+				<!-- LUNBO -->
+					<div id=idContainer2 class=container>
+						<table id=idSlider2 border=0 cellSpacing=0 cellPadding=0>
+								<tr>
+									<td class=td_f><a href="http://www.breezedust.com"
+										target="_blank"><img src="images/01.png"></a></td>
+									<td class=td_f><a href="http://JBreeze.BreezeDust.com"
+										target="_blank"><img src="images/02.png"></a></td>
+									<td class=td_f><a href="http://www.crazyforcode.org/xiaod/"
+										target="_blank"><img src="images/03.png"></a></td>
+									<td class=td_f><a href="Project/light.asp?url=../default.asp"
+										target="_blank"><img src="images/04.png"></a></td>
+									<td class=td_f><a href="http://www.breezedust.com"
+										target="_blank"><img src="images/01.png"></a></td>
+								</tr>
+						</table>
+						<ul id=idNum class=num></ul>
+					</div>
+				<!-- END LUNBO -->
+				</div>
+			</div>
+			<div id="c3" align="left">
+				<div id="new">
+					<img src="img/NEW.png" />
+				</div>
+				<div id="c3_1">
+				<?php
+				$table = $this->view->topTable;
+				for($con = 0; $con < $table->count; $con ++) {
+					?>
+						<li><img src="img/Hdian.png" /><a
+						href="index.php?controller=diary&art=2&pageID=<?php echo $table->Rows[$con]['PageID']?>"
+						title="<?php echo $table->Rows[$con]['PageName']?>"><?php echo BDFunction::getShortStr($table->Rows[$con]['PageName'], 18);?></a></li>
+						<?php
+					}
+				?>
+		</div>
+			</div>
+		</div>
+		<!-- END DOWN -->
+<?php 
+	require_once WEBROOT.'/application/views/Link/links.phtml';
+	require_once WEBROOT.'/application/views/Link/dibu.phtml';
+?>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="JS/lunbo.js"></script>
+<script type="text/javascript" src="JS/links.js"></script>

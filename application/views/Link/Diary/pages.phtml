@@ -1,0 +1,57 @@
+<div id="c2_1">
+<?php 
+	$table=$this->view->pageTable;
+	for($con=0;$con<$table->count;$con++){
+		?>
+	<div class="page">
+		<div class="Hpage">
+			<div class="hp1"><?php echo date("Y-m-d",strtotime($table->Rows[$con]['PageDate']))?></div>
+			<div class="hp2"><a href="index.php?controller=diary&art=2&pageID=<?php echo $table->Rows[$con]['PageID']?>"><?php echo $table->Rows[$con]['PageName']?></a></div>
+		</div>
+		<div class="Cpage">
+			<?php echo $table->Rows[$con]['PageYulan']?>
+		</div>
+		<div class="Dpage">
+			BreezeDust   &nbsp;&nbsp;&nbsp;发表于&nbsp; <?php echo date("H:i:s",strtotime($table->Rows[$con]['PageDate']))?>  |&nbsp;<a href="index.php?controller=diary&art=2&pageID=<?php echo $table->Rows[$con]['PageID']?>">阅读全文</a>&nbsp;|&nbsp;<a href="index.php?controller=diary&art=2&pageID=<?php echo $table->Rows[$con]['PageID']?>#LIUYAN">评论(<?php echo $table->Rows[$con]['PageDiscuss']?>)</a>&nbsp;|&nbsp;&nbsp;Tag: <?php echo $table->Rows[$con]['PageTag']?>
+		</div>
+	</div>				
+		<?php 
+	}
+?>
+
+	
+	
+	<table>
+		<?php 
+			if($this->view->PageCount<=1){
+				?>
+				<tr><td width="600px;"><div class="null"></div></td>
+				<td><font><div class="null"></div></font></td></tr>
+				<?php 
+			}
+			else{
+				if($this->view->Page==1){
+					?>
+					<tr><td width="600px;"><div class="null"></div></td>
+					<?php 
+				}
+				else {
+					?>
+					<tr><td width="600px;"><a href="index.php?controller=diary&page=<?php echo $this->view->Page-1?>"><div class="back"></div></a></td>
+					<?php 
+				}
+				
+				if($this->view->Page==$this->view->PageCount){
+					?>
+					<td><font><div class="null"></div></font></td></tr>
+					<?php
+				}
+				else{
+					?>
+					<td><a href="index.php?controller=diary&page=<?php echo $this->view->Page+1?>"><div class="next"></div></a>  </td></tr>
+					<?php 
+				}
+			}
+		?>
+</table>
+</div>

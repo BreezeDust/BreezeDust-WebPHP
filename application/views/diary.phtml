@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+<?php echo $this->view->title?>
+</title>
+
+	<script type="text/javascript" src="JS/jquery.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shCore.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushCss.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushPhp.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushCpp.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushJava.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushSql.js"></script>
+    <script type="text/javascript" src="Synta/scripts/shBrushXml.js"></script>
+	<script type="text/javascript" src="xheditor/xheditor.js"></script>
+    <link type="text/css" rel="stylesheet" href="Synta/styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="Synta/styles/shCoreDefault.css"/>
+<script type="text/javascript">
+    SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" type="text/css" href="css/Diary.css" />
+<!-- FUNCTION -->
+</head>
+<body>
+<div id="CEN">
+<div id="page">
+	<div id="p_up">
+		<div id="daohang">
+			<a href="index.php?controller=index">Home</a>
+			<a href="index.php?controller=diary">Diary</a>
+			<a href="index.php?controller=project">Project</a>
+			<a href="index.php?controller=about">About</a>		
+			</div>
+	</div>
+	<div id="c1" align="left">
+		<div id="tag"><img src="img/TAG.png" /></div>
+		<div id="c1li">
+			<li><img src="img/dian.png" /><a href="index.php?controller=diary&art=3&tag=1">Technology</a></li>
+			<li><img src="img/dian.png" /><a href="index.php?controller=diary&art=3&tag=2">Notepad</a></li>
+			<li><img src="img/dian.png" /><a href="index.php?controller=diary&art=3&tag=3">Release</a></li>
+			<li><img src="img/dian.png" /><a href="index.php?controller=diary&art=3&tag=4">Mental Process</a></li>
+		</div>
+	</div>
+	<div id="c2">
+			<?php 
+				require_once WEBROOT.'/application/views/Link/Diary/'.$this->view->selectPage.".phtml";
+			?>
+	</div>
+
+</div>
+<?php 
+	require_once WEBROOT.'/application/views/Link/dibu.phtml';
+?>
+</div>
+</body>
+</html>

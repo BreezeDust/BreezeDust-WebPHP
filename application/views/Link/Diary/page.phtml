@@ -1,0 +1,270 @@
+
+<div class="phander">
+	<a href="index.php?controller=diary"><div class="Diary"></div></a>
+</div>
+	<?php 
+		$table=$this->view->pageTable;
+		if($table->count>0){
+			?>
+			<div class="pages">
+				<div class="Hpage">
+					<div class="hp1"><?php echo date("Y-m-d",strtotime($table->Rows[0]['PageDate']))?></div>
+					<div class="hp2"><?php echo $table->Rows[0]['PageName']?></div>
+				</div>
+				<div class="Cpage">
+					<?php echo $table->Rows[0]['PageContent']?>
+				</div>
+				<div class="Dpage">
+				BreezeDust   &nbsp;&nbsp;&nbsp;发表于&nbsp; <?php echo date("H:i:s",strtotime($table->Rows[0]['PageDate']))?> &nbsp;&nbsp;&nbsp;Tag: <?php echo $table->Rows[0]['PageTag']?>
+				</div>
+			</div>			
+			<?php 
+		}
+	?>
+
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="margin-top:10px;">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more">更多</span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6550385" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+<div style="height:20px;">
+</div>
+<!-- 读取留言 -->
+<div id="Rliuyan">			
+<a name="RLIUYAN"></a>
+<div id="Rl_1"><img src="img/review.png" /></div>
+<?php 
+	$disBLL=new DiscussBLL();
+	$DIStable=$this->view->disTable;
+	for($con=0;$con<$DIStable->count;$con++){
+		$Rtable=$disBLL->getRBYdisID($DIStable->Rows[$con]['DSID']);
+		?>
+		<?php 
+			if($con==$DIStable->count-1){
+				?>
+				<a name="LASTR"></a>				
+				<?php
+			}
+		?>
+		<div class="HLpage">
+			<?php echo $DIStable->Rows[$con]['DScontent']?>
+		</div>
+		<?php 
+		for($j=0;$j<$Rtable->count;$j++){
+				?>
+				<!-- RL -->
+					<div class="Rlpage">
+						<font>BreezeDust:</font>
+						<br />
+						<?php echo $Rtable->Rows[$con]['DScontent']?>
+						<br />
+						<font style="font-size:10px;">
+							<?php echo date("Y-m-d",strtotime($Rtable->Rows[$con]['DSDate']))?>
+							&nbsp;&nbsp;&nbsp;<?php  echo date("H:i:s", strtotime($Rtable->Rows[$con]['DSDate']));?>
+						</font>
+					</div>
+				<!-- END RL -->				
+				<?php 
+		}
+		?>
+
+		<div class="DLpage">
+		
+			<font><?php echo $DIStable->Rows[$con]['DSname']?>&nbsp;&nbsp;|&nbsp;&nbsp;发表于&nbsp;
+			<?php echo date("Y-m-d",strtotime($DIStable->Rows[$con]['DSDate']))?>
+			&nbsp;&nbsp;&nbsp;<?php  echo date("H:i:s", strtotime($DIStable->Rows[$con]['DSDate']));?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+			<font>
+			<?php
+			$denluBLL=new DenLuBLL();
+			if(!is_null($_COOKIE["userName"]) && !is_null($_COOKIE["userPasswd"]) && $denluBLL->login($_COOKIE["userName"], $_COOKIE["userPasswd"])){
+				?>
+				<spacn onclick="showRLFROM(<?php echo $DIStable->Rows[$con]['DSID']?>)" style="cursor:pointer;">回复</span>
+				<?php			
+			}
+			?>
+			</font>
+		</div>		
+		<?php 
+	}
+?>
+<script type="text/javascript">
+	var DISID;
+	function closeRLFROM(){
+		$(".RLFROM").fadeOut(1000);
+	}
+	function showRLFROM(id){
+		DISID=id;
+		$(".RLFROM").fadeIn(1000);
+	}
+</script>
+	<div class="RLFROM">
+		<table >
+			<tr>
+				<td>
+					<textarea id="DScontentR" name="Lrpage" style="height: 300px; width:400px"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input name="LiuYan" type="button" value="回复" class="anniu1" onclick="addDiscussR()"/>
+					<input name="LiuYan" type="button" value="关闭" class="anniu1" onclick="closeRLFROM()"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<!-- 留言 -->
+<a name="LIUYAN"></a>
+
+<div id="LiuYan">
+<div id="MSG2" style="display: none"> 
+		<img src="img/cuo.png" />
+</div>
+
+<div id="MSG1" style="display: none"> 
+		<img src="img/ok1.png" />
+</div>
+<?php 
+	if(!is_null($_GET['msg'])){
+		if($_GET['msg']=="ok"){
+		?>
+		<script type="text/javascript">
+			$(function(){
+				$("#MSG1").fadeIn(3000);
+				$("#MSG1").fadeOut(5000);
+				});
+		</script>
+		<?php
+		}
+	}
+?>
+<table >
+	<tr>
+		<td>
+		<font class="Liuf">姓名</font><br /><input id="DSname" name="LYname" type="text" style="width:100px; height:15px;"  value="" />
+		</td>
+	</tr>
+  	<tr>
+    	<td>
+			<textarea id="DScontent" name="LYpage"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="text" value="" id="PLyanzhen" style="width:100px; height:15px;"/> <span id="PLyzvalue" style="font-family:Microsoft YaHei; font-size:12px; color:#666666;"></span>
+		</td>
+	</tr>
+  	<tr>
+	<input name="LYKEY" type="hidden" value="0" id="LYKEY"/>
+    	<td>
+		<input name="LiuYan" type="button" value="评论" class="anniu1" onclick="add()"/>
+		</td>
+	</tr>
+</table>
+
+</div>
+<script type="text/javascript">
+$('#DScontent').xheditor({ skin:'nostyle',tools: 'Bold,Italic,Underline,Strikethrough,About', width: '400px', height: '150px', forcePtag: false, cleanPaste: 0});
+$('#DScontentR').xheditor({ skin:'nostyle',tools: 'Bold,Italic,Underline,Strikethrough,About', width: '400px', height: '150px', forcePtag: false, cleanPaste: 0});
+    function getXMLHttpRequest() {
+        var createXHR;
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari
+            createXHR = new XMLHttpRequest();
+        }
+        else {
+            // c IE6, IE5
+            createXHR = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return createXHR;
+    }
+	var a=0;
+	var b=0;
+	var c=0;
+    function yanzheng() {
+        var Jsonhttp = getXMLHttpRequest();
+        Jsonhttp.onreadystatechange = function () {
+            if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
+				var obj=eval("("+Jsonhttp.responseText+")");
+				a=obj.a;
+				b=obj.b;
+				c=obj.c;
+				document.getElementById("PLyzvalue").innerHTML="  "+a+" + " + b+" = ?";
+            }
+        }
+        Jsonhttp.open("GET", "index.php?controller=api&action=yanzheng", true);
+        Jsonhttp.send();
+    }
+    function addDiscussR() {
+        var Jsonhttp = getXMLHttpRequest();
+        Jsonhttp.onreadystatechange = function () {
+            if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
+                var msg = eval("(" + Jsonhttp.responseText + ")");
+                if (msg.msg == "ok") {
+                	closeRLFROM();
+                	location.reload();
+                }
+                else{
+                    alert("error");
+                }
+            }
+        }
+        Jsonhttp.open("POST", "index.php?controller=api&action=addDiscussR", true);
+        Jsonhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        Jsonhttp.send("" +
+                      "DSPageID=" + <?php echo $table->Rows[0]['PageID']?> + "&" +
+                      "ParentID=" + DISID + "&" +
+                      "DScontent=" + encodeURIComponent($('#DScontentR').val()) + "&" +
+                      "");
+    }
+    function addDiscuss() {
+        var Jsonhttp = getXMLHttpRequest();
+        Jsonhttp.onreadystatechange = function () {
+            if (Jsonhttp.readyState == 4 && Jsonhttp.status == 200) {
+                var msg = eval("(" + Jsonhttp.responseText + ")");
+                if (msg.msg != "ok") {
+                    $("#MSG2").fadeIn(3000);
+                    $("#MSG2").fadeOut(5000);
+                }
+                else{
+                	yanzheng();
+                	window.location.href='index.php?controller=diary&art=2&msg=ok&pageID=<?php echo $table->Rows[0]['PageID']?>#LASTR';
+                }
+            }
+        }
+        Jsonhttp.open("POST", "index.php?controller=api&action=addDiscuss", true);
+        Jsonhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        Jsonhttp.send("" +
+                      "DSPageID=" + <?php echo $table->Rows[0]['PageID']?> + "&" +
+                      "DSname=" + encodeURIComponent($("#DSname").attr("value")) + "&" +
+                      "LYKEY=" + document.getElementById("LYKEY").value + "&" +
+                      "DScontent=" + encodeURIComponent($('#DScontent').val()) + "&" +
+                      "");
+    }
+	function yanzhengS(){
+		var c=document.getElementById("PLyanzhen").value;
+		document.getElementById("LYKEY").value=c;
+		if((a+b)==parseInt(c, 10)) return true;
+		alert("请重新输入正确答案!");
+		yanzheng();
+		return false;
+	}
+	function add(){
+		if(yanzhengS()){
+			addDiscuss();
+		}
+	}
+	yanzheng();
+</script>
